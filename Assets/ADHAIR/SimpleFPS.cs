@@ -23,10 +23,11 @@ public class SimpleFPS : MonoBehaviour
     public float AxisMouseY;
 
     [Header("Camera")]
-    [SerializeField] GameObject cameraHorror;
     [SerializeField] Transform target;
     [SerializeField] Transform Camera;
     [SerializeField] Material materialCamera;
+    [SerializeField] Camera nightVision;
+    [SerializeField] Camera withoutnightVision;
     bool isActiveCamera;
     bool NocturneVision;
     public bool isOnAreaToPickUp;
@@ -52,11 +53,13 @@ public class SimpleFPS : MonoBehaviour
             {
                 if(NocturneVision==false)
                 {
-                    materialCamera.color = new Color32(75, 255, 30, 255);
+                    nightVision.gameObject.SetActive(true);
+                    withoutnightVision.gameObject.SetActive(true);
                     NocturneVision = true;
                 }else if (NocturneVision)
                 {
-                    materialCamera.color = Color.white;
+                    nightVision.gameObject.SetActive(false);
+                    withoutnightVision.gameObject.SetActive(true);
                     NocturneVision = false;
                 }
             }
